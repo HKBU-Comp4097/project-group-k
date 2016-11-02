@@ -57,7 +57,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.setMyLocationEnabled(true);
             }
         }
-        mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+      /*  mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
                     @Override
                     public void onMyLocationChange(Location arg0) {
@@ -71,8 +71,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.moveCamera(center);
                         mMap.animateCamera(zoom);
                     }
-                });
-
+                });*/
     }
     private boolean checkPermission() {
         // Ask for permission if it wasn't granted yet
