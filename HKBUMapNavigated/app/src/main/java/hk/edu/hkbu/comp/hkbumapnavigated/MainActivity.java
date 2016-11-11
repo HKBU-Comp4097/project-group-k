@@ -15,11 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.SupportMapFragment;
-
 public class MainActivity extends AppCompatActivity {
-
-    SupportMapFragment sMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
