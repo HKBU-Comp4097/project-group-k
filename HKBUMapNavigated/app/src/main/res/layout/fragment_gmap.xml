@@ -39,9 +39,17 @@
         android:text="Set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="14dp"
-        android:id="@+id/setButton" />
+        android:id="@+id/setButton"
+        android:layout_alignBaseline="@+id/source"
+        android:layout_alignBottom="@+id/source"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/map"
+        android:layout_toEndOf="@+id/source"
+        android:id="@+id/clearButton" />
 
 </RelativeLayout>
