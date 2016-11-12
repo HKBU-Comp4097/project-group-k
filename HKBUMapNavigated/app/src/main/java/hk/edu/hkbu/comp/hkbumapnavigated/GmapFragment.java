@@ -77,6 +77,8 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.clear();
                 source.setText("");
                 destination.setText("");
+                LatLng marker = new LatLng(22.338036, 114.181979);
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
 
             }
         });
@@ -92,15 +94,19 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     if(locations[i].getName().equals(source.getText().toString())){
                         sourceMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(sourceMarker));
-                        //CameraUpdate cu= CameraUpdateFactory.newLatLng(sourceMarker);
-                        //mMap.animateCamera(cu);
                     }
                     if(locations[i].getName().equals(destination.getText().toString())){
                         destinationMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(destinationMarker));
                     }
                 }
-                if(sourceMarker!= null && destinationMarker!=null){
+                if(sourceMarker!=null && destinationMarker==null){
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sourceMarker, 18));
+                }
+                else if(sourceMarker==null && destinationMarker!=null){
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(destinationMarker, 18));
+                }
+                else if(sourceMarker!= null && destinationMarker!=null){
                         //draw path for only one path, change this after having completed paths
                         if((source.getText().toString().equals("Academic Community Hall")&&destination.getText().toString().equals("Academic and Administration Building"))||(source.getText().toString().equals("Academic and Administration Building")&&destination.getText().toString().equals("Academic Community Hall"))){
                             if(source.getText().toString().equals("Academic Community Hall"))
@@ -116,7 +122,10 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     int padding = 0;
                     CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                     mMap.animateCamera(cu);
-
+                }
+                else {
+                    LatLng marker = new LatLng(22.338036, 114.181979);
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
                 }
             }
 
