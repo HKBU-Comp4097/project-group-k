@@ -6,6 +6,40 @@
 
     <string name="action_settings">Settings</string>
 
+    <string-array name="location_name_array">
+        <item>Academic Community Hall</item>
+        <item>Academic and Administration Building</item>
+        <item>Au Shue Hung Memorial Library</item>
+        <item>Au Shue Hung Terrace Garden</item>
+        <item>Cha Chi-ming Science Tower</item>
+        <item>Christian Education Centre</item>
+        <item>Communication and Visual Arts Building</item>
+        <item>David C. Lam Building</item>
+        <item>Dr. Ng Tor Tai International House</item>
+        <item>Fong Shu Chuen Library</item>
+        <item>Franki Centre</item>
+        <item>Jockey Club Academic Community Centre</item>
+        <item>Jockey Club School of Chinese Medicine Building</item>
+        <item>Joint Sports Centre</item>
+        <item>Lam Woo International Conference Centre</item>
+        <item>Lui Ming Choi Centre</item>
+        <item>Madam Chan Wu Wan Kwai School of Continuing Education</item>
+        <item>Madam Kwok Chung Bo Fun Sports and Cultural Centre</item>
+        <item>Man Lung Garden</item>
+        <item>Music Rehearsal Hall</item>
+        <item>Oen Hall East</item>
+        <item>Oen Hall Main</item>
+        <item>Oen Hall West</item>
+        <item>Shaw Tower</item>
+        <item>Sing Tao Building</item>
+        <item>Sir Run Run Shaw Building</item>
+        <item>Student Residence Halls North</item>
+        <item>Student Residence Halls South</item>
+        <item>Wai Hang Sports Centre</item>
+        <item>Wing Lung Bank Building</item>
+        <item>Yeung Shui Sang Building</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -2,6 +2,7 @@ package hk.edu.hkbu.comp.hkbumapnavigated;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -10,20 +11,24 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-
-
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class GmapFragment extends Fragment implements OnMapReadyCallback {
 
     GoogleMap mMap;
+    AutoCompleteTextView source, destination;
+    private HKBULocation[] locations;
+    private Button setButton;
 
     @Nullable
     @Override
@@ -35,18 +40,56 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setButton = (Button)view.findViewById(R.id.setButton);
+        source = (AutoCompleteTextView)view.findViewById(R.id.source);
+        destination = (AutoCompleteTextView)view.findViewById(R.id.destination);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.select_dialog_item,getResources().getStringArray(R.array.location_name_array));
+        source.setThreshold(1);
+        destination.setThreshold(1);
+        source.setAdapter(adapter);
+        destination.setAdapter(adapter);
+        locations = LocationCreator.getLocations();
 
         SupportMapFragment fragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         fragment.getMapAsync(this);
+
+        setButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                mMap.clear();
+                LatLng sourceMarker = null, destinationMarker =null;
+                for(int i=0; i<locations.length;i++) {
+
+                    if(locations[i].getName().equals(source.getText().toString())){
+                        sourceMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
+                        mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(sourceMarker));
+                    }
+                    if(locations[i].getName().equals(destination.getText().toString())){
+                        destinationMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
+                        mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(destinationMarker));
+                    }
+                }
+                if(sourceMarker!= null && destinationMarker!=null){
+                        //draw path for only one path, change this after having completed paths
+                        if((source.getText().toString().equals("Academic Community Hall")&&destination.getText().toString().equals("Academic and Administration Building"))||(source.getText().toString().equals("Academic and Administration Building")&&destination.getText().toString().equals("Academic Community Hall"))){
+                            if(source.getText().toString().equals("Academic Community Hall"))
+                                mMap.addPolyline(new PolylineOptions().add(sourceMarker,new LatLng(22.341152, 114.180008),new LatLng(22.340344, 114.180263),new LatLng(22.339781, 114.180692),new LatLng(22.339759, 114.181577),new LatLng(22.339399, 114.181671),new LatLng(22.338900, 114.181977),new LatLng(22.337074, 114.181998),new LatLng(22.336680, 114.182180),destinationMarker).width(4).color(Color.BLUE));
+                            else  mMap.addPolyline(new PolylineOptions().add(destinationMarker,new LatLng(22.341152, 114.180008),new LatLng(22.340344, 114.180263),new LatLng(22.339781, 114.180692),new LatLng(22.339759, 114.181577),new LatLng(22.339399, 114.181671),new LatLng(22.338900, 114.181977),new LatLng(22.337074, 114.181998),new LatLng(22.336680, 114.182180),sourceMarker).width(4).color(Color.BLUE));;
+                        }
+                        else mMap.addPolyline(new PolylineOptions().add(sourceMarker,destinationMarker).width(4).color(Color.BLUE));
+
+                }
+            }
+
+        });
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
         mMap = googleMap;
         LatLng marker = new LatLng(22.338036, 114.181979);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
-        mMap.addMarker(new MarkerOptions().title("Hello Google Maps!").position(marker));
+
         if(checkPermission()) {
             mMap.setMyLocationEnabled(true);
         }
@@ -57,8 +100,12 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
             if(checkPermission()) {
                 mMap.setMyLocationEnabled(true);
             }
+
+
         }
-      /*  mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
+
+      /*
+      mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
 
                     @Override
                     public void onMyLocationChange(Location arg0) {
@@ -72,8 +119,11 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.moveCamera(center);
                         mMap.animateCamera(zoom);
                     }
-                });*/
+                });
+        */
+
     }
+
     private boolean checkPermission() {
         // Ask for permission if it wasn't granted yet
         return (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
