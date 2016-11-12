@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,6 +30,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     AutoCompleteTextView source, destination;
     private HKBULocation[] locations;
     private Button setButton;
+    private String[] locationName;
 
     @Nullable
     @Override
@@ -40,15 +42,23 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        locations = LocationCreator.getLocations();
+        locationName = new String[locations.length];
+
+        for(int i=0; i<locationName.length;i++){
+            locationName[i]=locations[i].getName();
+        }
+
         setButton = (Button)view.findViewById(R.id.setButton);
         source = (AutoCompleteTextView)view.findViewById(R.id.source);
         destination = (AutoCompleteTextView)view.findViewById(R.id.destination);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.select_dialog_item,getResources().getStringArray(R.array.location_name_array));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.select_dialog_item,locationName);
         source.setThreshold(1);
         destination.setThreshold(1);
         source.setAdapter(adapter);
         destination.setAdapter(adapter);
-        locations = LocationCreator.getLocations();
+
 
         SupportMapFragment fragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         fragment.getMapAsync(this);
@@ -63,6 +73,8 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     if(locations[i].getName().equals(source.getText().toString())){
                         sourceMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(sourceMarker));
+                        CameraUpdate center= CameraUpdateFactory.newLatLng(sourceMarker);
+                        mMap.moveCamera(center);
                     }
                     if(locations[i].getName().equals(destination.getText().toString())){
                         destinationMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
