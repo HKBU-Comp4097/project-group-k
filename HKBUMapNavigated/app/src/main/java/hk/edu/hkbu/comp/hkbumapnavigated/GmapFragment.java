@@ -77,8 +77,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.clear();
                 source.setText("");
                 destination.setText("");
-                LatLng marker = new LatLng(22.338036, 114.181979);
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
+                defaultCameraPosition();
 
             }
         });
@@ -124,19 +123,22 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     mMap.animateCamera(cu);
                 }
                 else {
-                    LatLng marker = new LatLng(22.338036, 114.181979);
-                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
+                    defaultCameraPosition();
                 }
             }
 
         });
     }
 
+    public void defaultCameraPosition(){
+        LatLng marker = new LatLng(22.338036, 114.181979);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng marker = new LatLng(22.338036, 114.181979);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
+        defaultCameraPosition();
 
         if(checkPermission()) {
             mMap.setMyLocationEnabled(true);
