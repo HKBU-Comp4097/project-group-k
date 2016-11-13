@@ -12,40 +12,47 @@
         card_view:cardCornerRadius="4dp"
         card_view:elevation="14dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/image"
-                android:layout_height="match_parent"
-                android:layout_width="wrap_content"
-                android:scaleType="fitStart"
-                android:padding="4dp"
-                android:layout_gravity="left"
-                android:layout_weight="1">
-            </ImageView>
-
-            <TextView
-                android:id="@+id/location"
-                android:textSize="16dip"
-                android:layout_toRightOf ="@+id/image"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                android:gravity="top" >
-            </TextView>
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:scaleType="fitStart"
+                    android:padding="8dp"
+                    android:layout_gravity="start">
+                </ImageView>
 
-            <TextView
-                android:id="@+id/abbreviation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/location"
-                android:layout_toRightOf="@+id/image"
-                android:layout_toEndOf="@+id/image">
-            </TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="8dp">
 
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/abbreviation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/colorPrimaryDark">
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/location"
+                        android:textSize="14sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimaryDark">
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
 </RelativeLayout>
