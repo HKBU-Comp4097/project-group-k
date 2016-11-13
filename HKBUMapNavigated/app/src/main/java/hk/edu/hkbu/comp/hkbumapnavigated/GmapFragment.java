@@ -1,6 +1,7 @@
 package hk.edu.hkbu.comp.hkbumapnavigated;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -35,23 +37,28 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     private Button setButton, clearButton;
     private String[] locationName;
     InputMethodManager imm;
+    private LatLng defaultLocation = new LatLng(22.338036, 114.181979);
+    float scale;
+    int padding;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_gmap, container, false);
-
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        scale = getContext().getResources().getDisplayMetrics().density;
+        padding = (int) (50 * scale + 0.5f);
+
         locations = LocationCreator.getLocations();
         locationName = new String[locations.length];
 
         for(int i=0; i<locationName.length;i++){
-            locationName[i]=locations[i].getName();
+            locationName[i]=locations[i].getName() + " - " + locations[i].getAbbreviation();
         }
 
         imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -60,7 +67,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
         clearButton = (Button)view.findViewById(R.id.clearButton);
         source = (AutoCompleteTextView)view.findViewById(R.id.source);
         destination = (AutoCompleteTextView)view.findViewById(R.id.destination);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getContext(),android.R.layout.select_dialog_item,locationName);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this.getContext(),R.layout.dropdown_layout,locationName);
         source.setThreshold(1);
         destination.setThreshold(1);
         source.setAdapter(adapter);
@@ -77,7 +84,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.clear();
                 source.setText("");
                 destination.setText("");
-
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
             }
         });
 
@@ -88,14 +95,11 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.clear();
                 LatLng sourceMarker = null, destinationMarker =null;
                 for(int i=0; i<locations.length;i++) {
-
-                    if(locations[i].getName().equals(source.getText().toString())){
+                    if((locations[i].getName() + " - " + locations[i].getAbbreviation()).equals(source.getText().toString())){
                         sourceMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(sourceMarker));
-                        //CameraUpdate cu= CameraUpdateFactory.newLatLng(sourceMarker);
-                        //mMap.animateCamera(cu);
                     }
-                    if(locations[i].getName().equals(destination.getText().toString())){
+                    if((locations[i].getName() + " - " + locations[i].getAbbreviation()).equals(destination.getText().toString())){
                         destinationMarker = new LatLng(locations[i].getLatitude(),locations[i].getLongitude());
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(destinationMarker));
                     }
@@ -113,21 +117,19 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     builder.include(sourceMarker);
                     builder.include(destinationMarker);
                     LatLngBounds bounds = builder.build();
-                    int padding = 0;
+
                     CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                     mMap.animateCamera(cu);
-
                 }
             }
-
         });
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng marker = new LatLng(22.338036, 114.181979);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(marker, 18));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
 
         if(checkPermission()) {
             mMap.setMyLocationEnabled(true);
@@ -139,28 +141,13 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
             if(checkPermission()) {
                 mMap.setMyLocationEnabled(true);
             }
-
-
         }
-
-      /*
-      mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
-
-                    @Override
-                    public void onMyLocationChange(Location arg0) {
-                        // TODO Auto-generated method stub
-                        System.out.println("get");
-
-                        CameraUpdate center= CameraUpdateFactory.newLatLng(new LatLng(arg0.getLatitude(), arg0.getLongitude()));
-                        CameraUpdate zoom=CameraUpdateFactory.zoomTo(12);
-
-
-                        mMap.moveCamera(center);
-                        mMap.animateCamera(zoom);
-                    }
-                });
-        */
-
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                hideKeyboard(getView());
+            }
+        });
     }
 
     private boolean checkPermission() {
@@ -169,5 +156,8 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 == PackageManager.PERMISSION_GRANTED );
     }
 
-
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 }
