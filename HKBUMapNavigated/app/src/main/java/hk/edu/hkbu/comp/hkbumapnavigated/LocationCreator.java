@@ -46,7 +46,7 @@ public class LocationCreator {
             HKBUDepartment social = new HKBUDepartment("社會工作系", "http://sowk.hkbu.edu.hk", "sowk@hkbu.edu.hk", "(852) 3411 7105");
             HKBUDepartment sociology = new HKBUDepartment("社會學系", "http://socweb.hkbu.edu.hk", "soc@hkbu.edu.hk", "(852) 3411-7131");
             HKBUDepartment ach = new HKBUDepartment("大學會堂", "http://www.ach.hkbu.edu.hk", "ach@hkbu.edu.hk", "(852) 3411 5182");
-            HKBUDepartment library = new HKBUDepartment("方樹泉圖書館", "http://library.hkbu.edu.hk/main/index.php", "libref@hkbu.edu.hk", "(852) 3411 7363");
+            HKBUDepartment library = new HKBUDepartment("區樹洪紀念圖書館", "http://library.hkbu.edu.hk/main/index.php", "libref@hkbu.edu.hk", "(852) 3411 7363");
             HKBUDepartment contEd = new HKBUDepartment("持續教育學院", "http://www.sce.hkbu.edu.hk", "sce@hkbu.edu.hk", "(852) 3411 5000");
             HKBUDepartment jointSports = new HKBUDepartment("聯校運動中心", "http://jsc.hkbu.edu.hk/", "jsc@hkbu.edu.hk", "(852) 2794 1168");
             HKBUDepartment lamwu = new HKBUDepartment("林護國際會議中心", "http://www.ach.hkbu.edu.hk/nab_wlb", "ach@hkbu.edu.hk", "(852) 3411 5182");
@@ -118,7 +118,7 @@ public class LocationCreator {
             HKBUDepartment social = new HKBUDepartment("Department of Social Work", "http://sowk.hkbu.edu.hk", "sowk@hkbu.edu.hk", "(852) 3411 7105");
             HKBUDepartment sociology = new HKBUDepartment("Department of Sociology", "http://socweb.hkbu.edu.hk", "soc@hkbu.edu.hk", "(852) 3411-7131");
             HKBUDepartment ach = new HKBUDepartment("Academic Community Hall", "http://www.ach.hkbu.edu.hk", "ach@hkbu.edu.hk", "(852) 3411 5182");
-            HKBUDepartment library = new HKBUDepartment("Fong Shu Chuen Library", "http://library.hkbu.edu.hk/main/index.php", "libref@hkbu.edu.hk", "(852) 3411 7363");
+            HKBUDepartment library = new HKBUDepartment("Au Shue Hung Memorial Library", "http://library.hkbu.edu.hk/main/index.php", "libref@hkbu.edu.hk", "(852) 3411 7363");
             HKBUDepartment contEd = new HKBUDepartment("School of Continuing Education", "http://www.sce.hkbu.edu.hk", "sce@hkbu.edu.hk", "(852) 3411 5000");
             HKBUDepartment jointSports = new HKBUDepartment("Joint Sports Centre", "http://jsc.hkbu.edu.hk/", "jsc@hkbu.edu.hk", "(852) 2794 1168");
             HKBUDepartment lamwu = new HKBUDepartment("Lam Wu International Conference Centre", "http://www.ach.hkbu.edu.hk/nab_wlb", "ach@hkbu.edu.hk", "(852) 3411 5182");
