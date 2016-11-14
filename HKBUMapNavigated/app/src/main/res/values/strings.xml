@@ -6,6 +6,102 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="chinese">Department of Chinese Language and Literature</string>
+    <string name="english">Department of English Language and Literature</string>
+    <string name="language">Language Centre</string>
+    <string name="music">Department of Music</string>
+    <string name="religion">Department of Religion and Philosophy</string>
+    <string name="humanities">Department of Humanities and Creative Writing</string>
+    <string name="translation">Translation Programme</string>
+    <string name="accountingAndLaw">Department of Accountancy and Law</string>
+    <string name="economics">Department of Economics</string>
+    <string name="finance">Department of Finance and Decision Sciences</string>
+    <string name="managment">Department of Management</string>
+    <string name="marketing">Department of Marketing</string>
+    <string name="film">Academy of Film</string>
+    <string name="communications">Department of Communication Studies</string>
+    <string name="journalism">Department of Journalism</string>
+    <string name="medicine">Chinese Medicine Programme</string>
+    <string name="biology">Department of Biology</string>
+    <string name="chemistry">Department of Chemistry</string>
+    <string name="computer">Department of Computer Science</string>
+    <string name="math">Department of Mathematics</string>
+    <string name="physics">Department of Physics</string>
+    <string name="education">Department of Education Studies</string>
+    <string name="geography">Department of Geography</string>
+    <string name="international">Department of Government and International Studies</string>
+    <string name="history">Department of History</string>
+    <string name="physical">Department of Physical Education</string>
+    <string name="social">Department of Social Work</string>
+    <string name="sociology">Department of Sociology</string>
+    <string name="ach">Academic Community Hall</string>
+    <string name="library">Fong Shu Chuen Library</string>
+    <string name="contEd">School of Continuing Education</string>
+    <string name="jointSports">Joint Sports Centre</string>
+    <string name="lamwu">Lam Wu International Conference Centre</string>
+    <string name="ntt">Dr. Ng Tor Tai International House</string>
+    <string name="ava">Academy of Visual Arts</string>
+    <string name="srh">Student Residence Halls</string>
+
+    <string name="MRH">Music Rehearsal Hall</string>
+    <string name="ASH">Au Shue Hung Building</string>
+    <string name="STB">Sing Tao Building</string>
+    <string name="ACH">Academic Community Hall</string>
+    <string name="LMC">Lui Ming Choi Centre</string>
+    <string name="CEC">Christian Education Centre</string>
+    <string name="OEM">Oen Hall Main</string>
+    <string name="OEW">Oen Hall West</string>
+    <string name="OEE">Oen Hall East</string>
+    <string name="SCT">Cha Chi-ming Science Tower</string>
+    <string name="YSS">Yeung Shui Sang Building</string>
+    <string name="RRS">Sir Run Run Shaw Building</string>
+    <string name="FSC">Fong Shu Chuen Library</string>
+    <string name="MLG">Man Lung Garden</string>
+    <string name="FC">Franki Centre</string>
+    <string name="WHS">Wai Hang Sports Centre</string>
+    <string name="SWT">Shaw Tower</string>
+    <string name="AML">Au Shue Hung Memorial Library</string>
+    <string name="JSC">Joint Sports Centre</string>
+    <string name="WLB">Wing Lung Bank Building</string>
+    <string name="LWC">Lam Woo International Conference Centre</string>
+    <string name="DLB">David C. Lam Building</string>
+    <string name="SCC">Madam Kwok Chung Bo Fun Sports and Cultural Centre</string>
+    <string name="AAB">Academic and Administration Building</string>
+    <string name="NTT">Dr. Ng Tor Tai International House</string>
+    <string name="ACC">Jockey Club Academic Community Centre</string>
+    <string name="SCE">Madam Chan Wu Wan Kwai School of Continuing Education</string>
+    <string name="SCM">Jockey Club School of Chinese Medicine Building</string>
+    <string name="SRHN">Student Residence Halls North</string>
+    <string name="SRHS">Student Residence Halls South</string>
+    <string name="CVA">Communication and Visual Arts Building</string>
+
+    <string name="SHAW">Shaw Campus</string>
+    <string name="HSH">Ho Sin Hang Campus</string>
+    <string name="BUR">Baptist University Road Campus</string>
+
+    <string name="Map">Map</string>
+    <string name="Locations">Locations</string>
+
+    <string name="no_info">Sorry, no info available.</string>
+
+    <string name="Name"><b>Name: </b></string>
+    <string name="Website"><b>Website: </b></string>
+    <string name="Email"><b>Email: </b></string>
+    <string name="Tel"><b>Tel: </b></string>
+    <string name="tel">tel:</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- TODO: Remove or change this placeholder text -->
