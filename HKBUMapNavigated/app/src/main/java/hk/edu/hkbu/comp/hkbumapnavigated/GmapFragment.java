@@ -28,6 +28,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.Locale;
+
 public class GmapFragment extends Fragment implements OnMapReadyCallback {
 
     GoogleMap mMap;
@@ -49,11 +51,10 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         scale = getContext().getResources().getDisplayMetrics().density;
         padding = (int) (50 * scale + 0.5f);
 
-        locations = LocationCreator.getLocations();
+        locations = LocationCreator.getLocations(Locale.getDefault().getLanguage());
         locationName = new String[locations.length];
 
         for(int i=0; i<locationName.length;i++){

@@ -89,21 +89,11 @@
     <string name="Email"><b>Email: </b></string>
     <string name="Tel"><b>Tel: </b></string>
     <string name="tel">tel:</string>
+    <string name="set">Set</string>
+    <string name="clear">Clear</string>
+    <string name="enter_destination">Enter destination</string>
+    <string name="enter_source_location">Enter source location</string>
+    <string name="contact_info">Contact Info:</string>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
