@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Locale;
+
 public class RecyclerViewFragment extends Fragment {
 
     public RecyclerViewFragment() {
@@ -29,7 +31,7 @@ public class RecyclerViewFragment extends Fragment {
 
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(LocationCreator.getLocations(), getContext());
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(LocationCreator.getLocations(Locale.getDefault().getLanguage()), getContext());
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

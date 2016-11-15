@@ -19,7 +19,7 @@
         android:maxLines="1"
         android:scrollHorizontally="true"
         android:ellipsize="end"
-        android:hint="Enter source location"
+        android:hint="@string/enter_source_location"
         android:layout_toStartOf="@+id/setButton"
         android:textSize="16sp"/>
 
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/destination"
         android:layout_below="@+id/source"
-        android:hint="Enter destination"
+        android:hint="@string/enter_destination"
         android:maxLines="1"
         android:scrollHorizontally="true"
         android:ellipsize="end"
@@ -37,7 +37,7 @@
         android:textSize="16sp"/>
 
     <Button
-        android:text="Set"
+        android:text="@string/set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/setButton"
@@ -47,7 +47,7 @@
         android:textSize="16sp"/>
 
     <Button
-        android:text="Clear"
+        android:text="@string/clear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/map"

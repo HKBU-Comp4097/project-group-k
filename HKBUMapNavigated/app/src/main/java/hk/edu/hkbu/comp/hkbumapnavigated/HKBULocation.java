@@ -1,6 +1,5 @@
 package hk.edu.hkbu.comp.hkbumapnavigated;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class HKBULocation implements Comparable<HKBULocation>{
@@ -11,6 +10,7 @@ public class HKBULocation implements Comparable<HKBULocation>{
     private double longitude;
     private Campus campus;
     private ArrayList<HKBUDepartment> departments;
+
 
     public enum Campus {SHAW("Shaw Campus"), HSH("Ho Sin Hang Campus"), BUR("Baptist University Road Campus");
 
