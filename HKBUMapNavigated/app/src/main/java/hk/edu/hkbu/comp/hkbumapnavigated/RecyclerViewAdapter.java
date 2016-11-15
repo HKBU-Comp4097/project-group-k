@@ -85,7 +85,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 if (contactInfo == null || contactInfo.size() == 0) {
                     TextView view = new TextView(context);
-                    view.setText("Sorry, no info available.");
+                    view.setText(context.getResources().getString(R.string.no_info));
                     view.setPadding(leftPadding, otherPadding, otherPadding, otherPadding);
                     LinearLayout linearLayout = (LinearLayout) popupWindow.getContentView().findViewById(R.id.info_card);
                     linearLayout.addView(view);
@@ -113,12 +113,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         email.setAutoLinkMask(Linkify.EMAIL_ADDRESSES);
                         email.setLinksClickable(true);
 
-                        name.setText(Html.fromHtml("<b>Name: </b>" + contact.getName()));
-                        website.setText(Html.fromHtml("<b>Website: </b>" + contact.getWebsite()));
-                        email.setText(Html.fromHtml("<b>Email: </b>" + contact.getEmail()));
-                        phone.setText(Html.fromHtml("<b>Tel: </b>" + contact.getTelephone()));
+                        name.setText(Html.fromHtml(context.getResources().getString(R.string.Name) + contact.getName()));
+                        website.setText(Html.fromHtml(context.getResources().getString(R.string.Website) + contact.getWebsite()));
+                        email.setText(Html.fromHtml(context.getResources().getString(R.string.Email) + contact.getEmail()));
+                        phone.setText(Html.fromHtml(context.getResources().getString(R.string.Tel) + contact.getTelephone()));
 
-                        Linkify.addLinks(phone, phonePattern, "tel:");
+                        Linkify.addLinks(phone, phonePattern, context.getResources().getString(R.string.tel));
                         phone.setLinksClickable(true);
 
                         linearLayout.addView(name);

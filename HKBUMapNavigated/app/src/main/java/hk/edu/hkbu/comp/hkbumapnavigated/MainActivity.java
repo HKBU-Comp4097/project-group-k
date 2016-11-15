@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        String tabTitles[] = new String[] { "Map", "Locations" };
+        String tabTitles[] = new String[] {getString(R.string.Map), getString(R.string.Locations) };
         Context context;
 
         public PagerAdapter(FragmentManager fm, Context context) {

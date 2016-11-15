@@ -157,8 +157,9 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
 
     public void drawPath(LatLng sourceMarker,LatLng destinationMarker){
 
-        if((source.getText().toString().startsWith("Academic Community Hall")&&destination.getText().toString().startsWith("Academic and Administration Building"))||(source.getText().toString().startsWith("Academic and Administration Building")&&destination.getText().toString().startsWith("Academic Community Hall"))){
-            if(source.getText().toString().startsWith("Academic Community Hall"))
+        if((source.getText().toString().startsWith(getString(R.string.ACH))&&destination.getText().toString().startsWith(getString(R.string.AAB))
+                ||(source.getText().toString().startsWith(getString(R.string.AAB))&&destination.getText().toString().startsWith(getString(R.string.ACH))))){
+            if(source.getText().toString().startsWith(getString(R.string.ACH)))
                 mMap.addPolyline(new PolylineOptions().add(sourceMarker,new LatLng(22.341152, 114.180008),new LatLng(22.340344, 114.180263),new LatLng(22.339781, 114.180692),new LatLng(22.339759, 114.181577),new LatLng(22.339399, 114.181671),new LatLng(22.338900, 114.181977),new LatLng(22.337074, 114.181998),new LatLng(22.336680, 114.182180),destinationMarker).width(4).color(Color.BLUE));
             else  mMap.addPolyline(new PolylineOptions().add(destinationMarker,new LatLng(22.341152, 114.180008),new LatLng(22.340344, 114.180263),new LatLng(22.339781, 114.180692),new LatLng(22.339759, 114.181577),new LatLng(22.339399, 114.181671),new LatLng(22.338900, 114.181977),new LatLng(22.337074, 114.181998),new LatLng(22.336680, 114.182180),sourceMarker).width(4).color(Color.BLUE));;
         }
