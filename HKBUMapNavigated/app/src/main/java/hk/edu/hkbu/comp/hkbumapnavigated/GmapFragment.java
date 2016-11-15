@@ -104,7 +104,13 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(destinationMarker));
                     }
                 }
-                if(sourceMarker!= null && destinationMarker!=null){
+                if(sourceMarker!=null && destinationMarker==null){
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sourceMarker, 18));
+                }
+                else if(sourceMarker==null && destinationMarker!=null){
+                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(destinationMarker, 18));
+                }
+                else if(sourceMarker!= null && destinationMarker!=null){
 
                     drawPath(sourceMarker,destinationMarker);
 
@@ -116,6 +122,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                     CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                     mMap.animateCamera(cu);
                 }
+                else  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
             }
         });
 
