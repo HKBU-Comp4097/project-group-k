@@ -87,4 +87,5 @@
     <string name="enter_destination">輸入目的地</string>
     <string name="enter_source_location">輸入起點</string>
     <string name="set">確定</string>
+    <string name="multiple">請到網頁查詢</string>
 </resources>

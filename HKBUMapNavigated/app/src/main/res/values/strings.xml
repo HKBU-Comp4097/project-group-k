@@ -94,6 +94,7 @@
     <string name="enter_destination">Enter destination</string>
     <string name="enter_source_location">Enter source location</string>
     <string name="contact_info">Contact Info:</string>
+    <string name="multiple">Multiple, see website.</string>
 
 
 </resources>
