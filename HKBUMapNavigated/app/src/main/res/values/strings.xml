@@ -96,5 +96,17 @@
     <string name="contact_info">Contact Info:</string>
     <string name="multiple">Multiple, see website.</string>
 
+    <string name="settings">Settings</string>
+    <string name="atms">ATMs</string>
+    <string name="coffee_shops">Coffee Shops</string>
+    <string name="canteens">Canteens</string>
+    <string name="banks">Banks</string>
+    <string name="also_show">Also show:</string>
+
+    <string name="pacfic">Pacific Coffee</string>
+    <string name="starbucks">Starbucks Coffee</string>
+    <string name="atm">ATM</string>
+    <string name="hsbank">Hang Seng Bank</string>
+    <string name="canteen">Canteen</string>
 
 </resources>
