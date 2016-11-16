@@ -103,7 +103,7 @@
     <string name="banks">Banks</string>
     <string name="also_show">Also show (online only):</string>
 
-    <string name="pacfic">Pacific Coffee</string>
+    <string name="pacfic" translatable="false">Pacific Coffee</string>
     <string name="starbucks">Starbucks Coffee</string>
     <string name="atm">ATM</string>
     <string name="hsbank">Hang Seng Bank</string>
