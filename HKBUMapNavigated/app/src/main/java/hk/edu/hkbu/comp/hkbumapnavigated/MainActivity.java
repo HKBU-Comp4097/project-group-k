@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the ViewPager and set it's PagerAdapter so that it can display items
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(3);
         final PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), MainActivity.this);
         viewPager.setAdapter(pagerAdapter);
 
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
     class PagerAdapter extends FragmentPagerAdapter {
 
-        String tabTitles[] = new String[] {getString(R.string.Map), getString(R.string.Locations) };
+        String tabTitles[] = new String[] {getString(R.string.Map), getString(R.string.Locations), getString(R.string.offline_map) };
         Context context;
         HashMap<Integer, String> tags = new HashMap<>();
 
@@ -188,6 +189,8 @@ public class MainActivity extends AppCompatActivity {
                     return new GmapFragment();
                 case 1:
                     return new RecyclerViewFragment();
+                case 2:
+                    return new OfflineMapFragment();
                 }
 
             return null;

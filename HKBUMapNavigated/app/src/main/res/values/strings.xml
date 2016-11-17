@@ -101,12 +101,14 @@
     <string name="coffee_shops">Coffee Shops</string>
     <string name="canteens">Canteens</string>
     <string name="banks">Banks</string>
-    <string name="also_show">Also show:</string>
+    <string name="also_show">Also show (online only):</string>
 
     <string name="pacfic">Pacific Coffee</string>
     <string name="starbucks">Starbucks Coffee</string>
     <string name="atm">ATM</string>
     <string name="hsbank">Hang Seng Bank</string>
     <string name="canteen">Canteen</string>
+
+    <string name="offline_map">Offline Map</string>
 
 </resources>
