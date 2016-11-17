@@ -8,32 +8,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:id="@+id/info_card">
+        android:id="@+id/info_card"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="230dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_gravity="center">
 
-            <ImageView
-                android:id="@+id/info_image"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:scaleType="fitStart"
-                android:padding="10dp">
-            </ImageView>
+                <ImageView
+                    android:id="@+id/info_image"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:scaleType="fitStart"
+                    android:paddingBottom="10dp">
+                </ImageView>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/info_abbreviation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/colorPrimaryDark">
-        </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/info_abbreviation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/colorPrimaryDark">
+            </TextView>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dip"
+                android:id="@+id/info_popup_close"
+                android:src="@drawable/places_ic_clear"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_marginRight="15dp"
+                />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/info_location"

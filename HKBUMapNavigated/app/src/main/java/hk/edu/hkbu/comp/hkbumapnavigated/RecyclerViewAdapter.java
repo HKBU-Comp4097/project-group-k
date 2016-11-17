@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -73,6 +74,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 ((TextView) popupWindow.getContentView().findViewById(R.id.info_location)).setText(locations[position].getName());
                 ((TextView) popupWindow.getContentView().findViewById(R.id.info_abbreviation)).setText(locations[position].getAbbreviation());
                 ((ImageView) popupWindow.getContentView().findViewById(R.id.info_image)).setImageResource(getResId(locations[position].getImage()));
+                (popupWindow.getContentView().findViewById(R.id.info_popup_close)).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        popupWindow.dismiss();
+                    }
+                });
 
                 // Dynamic Contact info
                 ArrayList<HKBUDepartment> contactInfo = locations[position].getDepartments();
@@ -129,45 +136,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 }
 
                 popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                popupWindow.setTouchable(true);
-                popupWindow.setTouchInterceptor(new View.OnTouchListener() {
-                    private long pressStartTime;
-                    private float pressedX;
-                    private float pressedY;
-                    private static final int max_distance = 15;
-                    private static final int max_duration = 1000;
-
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event) {
-                        if (event.getAction() != MotionEvent.ACTION_SCROLL) {
-                            switch (event.getAction()) {
-                                case MotionEvent.ACTION_DOWN: {
-                                    pressStartTime = System.currentTimeMillis();
-                                    pressedX = event.getX();
-                                    pressedY = event.getY();
-                                }
-                                case MotionEvent.ACTION_UP: {
-                                    if (System.currentTimeMillis() - pressStartTime < max_duration &&
-                                            calcDistanceDP(pressedX, pressedY, event.getX(), event.getY()) < max_distance) {
-                                        popupWindow.dismiss();
-                                    }
-                                }
-                            }
-                        }
-                        return true;
-                    }
-                });
-
                 popupWindow.showAtLocation(infoView, Gravity.NO_GRAVITY, 0, 0);
             }
         });
-    }
-
-    public float calcDistanceDP(float x1, float y1, float x2, float y2) {
-        float dx = x1 - x2;
-        float dy = y1 - y2;
-        float distanceInPx = (float) Math.sqrt(dx * dx + dy * dy);
-        return distanceInPx / context.getResources().getDisplayMetrics().density;
     }
 
     public int getResId(String resName) {

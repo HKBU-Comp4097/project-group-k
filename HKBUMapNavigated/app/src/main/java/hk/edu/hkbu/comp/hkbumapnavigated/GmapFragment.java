@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -155,6 +154,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mMap = googleMap;
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
 
         if (checkPermission()) {
