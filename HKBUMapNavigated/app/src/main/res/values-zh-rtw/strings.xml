@@ -98,4 +98,5 @@
     <string name="hsbank">恒生銀行</string>
     <string name="settings">設定</string>
     <string name="starbucks" translatable="false">星巴克咖啡</string>
+    <string name="offline_map">離線地圖</string>
 </resources>
