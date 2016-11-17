@@ -26,7 +26,8 @@
             android:src="@drawable/ic_setting_dark"
             android:layout_gravity="right"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingRight="20dp"
+            android:padding="8dp"
+            android:layout_marginRight="15dp"
             />
     </android.support.v7.widget.Toolbar>
 
