@@ -10,7 +10,7 @@
     <string name="Locations">地點</string>
     <string name="Map">地圖</string>
     <string name="ASH">區樹洪樓</string>
-    <string name="BUR">" 浸會大學道校園"</string>
+    <string name="BUR">浸會大學道校園</string>
     <string name="CEC">基督教教育中心</string>
     <string name="CVA">傳理視藝大樓</string>
     <string name="DLB">思齊樓</string>
@@ -88,4 +88,14 @@
     <string name="enter_source_location">輸入起點</string>
     <string name="set">確定</string>
     <string name="multiple">請到網頁查詢</string>
+    <string name="also_show">也顯示</string>
+    <string name="atm">自動櫃員機</string>
+    <string name="atms">自動櫃員機</string>
+    <string name="banks">銀行</string>
+    <string name="canteen">飯堂</string>
+    <string name="canteens">飯堂</string>
+    <string name="coffee_shops">咖啡店</string>
+    <string name="hsbank">恒生銀行</string>
+    <string name="settings">設定</string>
+    <string name="starbucks" translatable="false">星巴克咖啡</string>
 </resources>
