@@ -18,6 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -60,7 +63,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(RecyclerViewHolder holder, final int position) {
         holder.location.setText(locations[position].getName());
         holder.abbreviation.setText(locations[position].getAbbreviation());
-        holder.image.setImageResource(getResId(locations[position].getImage()));
+        Glide.with(context).load(getResId(locations[position].getImage())).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 // Default info
                 ((TextView) popupWindow.getContentView().findViewById(R.id.info_location)).setText(locations[position].getName());
                 ((TextView) popupWindow.getContentView().findViewById(R.id.info_abbreviation)).setText(locations[position].getAbbreviation());
-                ((ImageView) popupWindow.getContentView().findViewById(R.id.info_image)).setImageResource(getResId(locations[position].getImage()));
+                Glide.with(context).load(getResId(locations[position].getImage())).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(((ImageView) popupWindow.getContentView().findViewById(R.id.info_image)));
                 (popupWindow.getContentView().findViewById(R.id.info_popup_close)).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
