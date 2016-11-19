@@ -115,6 +115,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View v) {
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 mMap.clear();
+                updateOptionalLocations();
                 LatLng sourceMarker = null, destinationMarker = null;
                 for (int i = 0; i < locations.length; i++) {
                     if ((locations[i].getName() + " - " + locations[i].getAbbreviation()).equals(source.getText().toString())) {
