@@ -115,7 +115,6 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View v) {
                 imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 mMap.clear();
-                updateOptionalLocations();
                 LatLng sourceMarker = null, destinationMarker = null;
                 for (int i = 0; i < locations.length; i++) {
                     if ((locations[i].getName() + " - " + locations[i].getAbbreviation()).equals(source.getText().toString())) {
@@ -127,13 +126,11 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                         mMap.addMarker(new MarkerOptions().title(locations[i].getName()).position(destinationMarker));
                     }
                 }
-                if(sourceMarker!=null && destinationMarker==null){
+                if (sourceMarker != null && destinationMarker == null) {
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sourceMarker, 18));
-                }
-                else if(sourceMarker==null && destinationMarker!=null){
+                } else if (sourceMarker == null && destinationMarker != null) {
                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(destinationMarker, 18));
-                }
-                else if(sourceMarker!= null && destinationMarker!=null){
+                } else if (sourceMarker != null && destinationMarker != null) {
 
                     drawPath(sourceMarker, destinationMarker);
 
@@ -144,8 +141,9 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
 
                     CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
                     mMap.animateCamera(cu);
-                }
-                else  mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
+                } else mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 18));
+                createOptionalMarkers();
+                updateOptionalLocations();
             }
         });
 
@@ -192,8 +190,8 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
         optionalMarkers.put(HKBUSimpleLocation.LocationType.CANTEEN, new ArrayList<Marker>());
         optionalMarkers.put(HKBUSimpleLocation.LocationType.COFFEE, new ArrayList<Marker>());
 
-        for (HKBUSimpleLocation simpleLocation: LocationCreator.getSimpleLocations(Locale.getDefault().getLanguage())) {
-            for (Coordinates coordinates: simpleLocation.getCoordinates()) {
+        for (HKBUSimpleLocation simpleLocation : LocationCreator.getSimpleLocations(Locale.getDefault().getLanguage())) {
+            for (Coordinates coordinates : simpleLocation.getCoordinates()) {
                 switch (simpleLocation.getLocationType()) {
                     case ATM:
                         optionalMarkers.get(HKBUSimpleLocation.LocationType.ATM).add(
@@ -246,8 +244,7 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
                 mMap.addPolyline(new PolylineOptions().add(sourceMarker, new LatLng(22.341152, 114.180008), new LatLng(22.340344, 114.180263), new LatLng(22.339781, 114.180692), new LatLng(22.339759, 114.181577), new LatLng(22.339399, 114.181671), new LatLng(22.338900, 114.181977), new LatLng(22.337074, 114.181998), new LatLng(22.336680, 114.182180), destinationMarker).width(4).color(Color.BLUE));
             else
                 mMap.addPolyline(new PolylineOptions().add(destinationMarker, new LatLng(22.341152, 114.180008), new LatLng(22.340344, 114.180263), new LatLng(22.339781, 114.180692), new LatLng(22.339759, 114.181577), new LatLng(22.339399, 114.181671), new LatLng(22.338900, 114.181977), new LatLng(22.337074, 114.181998), new LatLng(22.336680, 114.182180), sourceMarker).width(4).color(Color.BLUE));
-        }
-        else
+        } else
             mMap.addPolyline(new PolylineOptions().add(sourceMarker, destinationMarker).width(4).color(Color.BLUE));
 
     }
@@ -259,19 +256,19 @@ public class GmapFragment extends Fragment implements OnMapReadyCallback {
         boolean coffee = sharedPreferences.getBoolean("coffeeCheckbox", false);
 
 
-        for (Marker marker: optionalMarkers.get(HKBUSimpleLocation.LocationType.ATM)) {
+        for (Marker marker : optionalMarkers.get(HKBUSimpleLocation.LocationType.ATM)) {
             marker.setVisible(atms);
         }
 
-        for (Marker marker: optionalMarkers.get(HKBUSimpleLocation.LocationType.BANK)) {
+        for (Marker marker : optionalMarkers.get(HKBUSimpleLocation.LocationType.BANK)) {
             marker.setVisible(bank);
         }
 
-        for (Marker marker: optionalMarkers.get(HKBUSimpleLocation.LocationType.CANTEEN)) {
+        for (Marker marker : optionalMarkers.get(HKBUSimpleLocation.LocationType.CANTEEN)) {
             marker.setVisible(canteen);
         }
 
-        for (Marker marker: optionalMarkers.get(HKBUSimpleLocation.LocationType.COFFEE)) {
+        for (Marker marker : optionalMarkers.get(HKBUSimpleLocation.LocationType.COFFEE)) {
             marker.setVisible(coffee);
         }
     }
